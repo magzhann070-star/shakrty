@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Нұрбол & Жамал – Тойға шақыру</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1077/1077035.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #fdf6f0;
+      color: #333;
+      text-align: center;
+      scroll-behavior: smooth;
+    }
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
+        url('fon.jpeg') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+      animation: fadeIn 2s ease-in-out;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+      font-family: 'Great Vibes', cursive;
+    }
+    .hero span { color: gold; }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: gold;
+      color: black;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #e6c300; transform: scale(1.05); }
+    #musicBtn {
+      margin-top: 15px;
+      padding: 8px 18px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.85);
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    #musicBtn:hover { background: #ddd; }
+
+    section {
+      padding: 50px 20px;
+      margin: 30px auto;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.95);
+      animation: slideUp 1s ease;
+    }
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #a67c00;
+    }
+    ul, ol { text-align: left; line-height: 1.6; }
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Нұрбол <span>&</span> Жамал</h1>
+    <p>05 қазан 2025 жыл, Шымкент</p>
+    <div id="countdown"></div>
+    <a href="#details" class="btn">Толығырақ</a>
+    <button id="musicBtn">🎵 Музыка</button>
+  </div>
+
+  <section id="details">
+    <h2>Құрметті қонақтар!</h2>
+    <p>Сіздерді біздің қуанышымызға ортақтасып, өміріміздің ең маңызды күнін бірге атап өтуге шақырамыз.</p>
+    <ul style="list-style:none; padding:0; font-size:1.1rem;">
+      <li><strong>📅 Күні:</strong> 05.10.2025</li>
+      <li><strong>⏰ Уақыты:</strong> 19:00</li>
+      <li><strong>📍 Мекенжай:</strong> 
+        <a href="https://2gis.kz/shymkent/geo/70000001025982910/69.546217,42.339160" target="_blank">
+          “QAZAQSTAN-2050” тойханасы, Шымкент
+        </a>
+      </li>
+      <li><strong>👗 Дресс-код:</strong> Ақ, алтын, крем түстері</li>
+    </ul>
+  </section>
+
+  <section id="schedule">
+    <h2>Бағдарлама</h2>
+    <ol style="max-width:400px; margin:0 auto; font-size:1.1rem;">
+      <li>19:00 – Қонақтарды қарсы алу</li>
+      <li>20:00 – Ресми бөлім, бата</li>
+      <li>21:00 – Ас берілімі</li>
+      <li>23:00 – Ойын-сауық</li>
+      <li>00:00 – Қоштасу</li>
+    </ol>
+  </section>
+
+  <section id="rsvp">
+    <h2>Құрметті қонақ</h2>
+    <p>Қатысатыныңызды <strong>25 қыркүйекке дейін</strong> хабарлаңыз:</p>
+    <div style="display:flex; flex-direction:column; gap:15px; align-items:center; margin-top:20px;">
+      <a href="https://wa.me/77758299596?text=Мен%20тойға%20қатысамын!" class="btn" style="background:#25D366; color:white;">📞 WhatsApp арқылы</a>
+      <a href="https://2gis.kz/shymkent/geo/70000001025982910/69.546217,42.339160" target="_blank" class="btn" style="background:#0078D7; color:white;">📍 Адреске бару</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>❤️ Нұрбол & Жамал</p>
+  </footer>
+
+  <!-- Музыка -->
+  <audio id="bgMusic" src="zarzar.mp3" loop></audio>
+
+  <script>
+    // Таймер
+    const countdown = document.getElementById("countdown");
+    const weddingDate = new Date("Oct 05, 2025 19:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      if (diff <= 0) {
+        countdown.textContent = "Той басталды!";
+        return;
+      }
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const s = Math.floor((diff % (1000*60)) / 1000);
+      countdown.textContent = `${d} күн ${h} сағ ${m} мин ${s} сек`;
+    }, 1000);
+
+    // Музыка автоматты қосылу
+    const music = document.getElementById("bgMusic");
+    window.addEventListener("load", () => {
+      music.muted = true;
+      music.play().then(() => {
+        setTimeout(() => {
+          music.muted = false;
+        }, 1000);
+      }).catch(err => {
+        console.log("Авто қосылу бұғатталды, қолданушы батырма арқылы қосады:", err);
+      });
+    });
+
+    // Батырма арқылы басқару
+    const btn = document.getElementById("musicBtn");
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "⏸ Музыка";
+      } else {
+        music.pause();
+        btn.textContent = "🎵 Музыка";
+      }
+    });
+  </script>
+</body>
+</html>
